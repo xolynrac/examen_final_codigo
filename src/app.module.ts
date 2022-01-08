@@ -9,8 +9,7 @@ import { ClienteModule } from './cliente/cliente.module';
 @Module({
   imports: [
     ClienteModule,
-    //TypeOrmModule.forRoot(),
-    InMemoryDBModule.forRoot({})
+    TypeOrmModule.forRoot(),
   ],
   controllers: [AppController],
   providers: [AppService],

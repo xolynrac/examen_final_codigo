@@ -1,6 +1,7 @@
 module.exports = {
     type: 'mysql',
-    url:'mysql://root:convocatoria@localhost:3306/convocatoria',
+    url:'mysql://sql10464114:kBle6qy5w6@sql10.freemysqlhosting.net:3306/sql10464114',
+    //url:'mysql://root:convocatoria@localhost:3306/convocatoria',
     migrationsRun: true,
     logging: true,
     timezone: '+0',

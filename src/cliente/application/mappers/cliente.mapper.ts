@@ -5,13 +5,14 @@ import { ClienteTypeORM } from '../../infrastructure/persistence/typeorm/entitie
 
 import { PersonNameTypeORM } from '../../infrastructure/persistence/typeorm/value-objects/person-name.typeorm';
 import { DniTypeORM } from '../../infrastructure/persistence/typeorm/value-objects/dni.typeorm';
-
+import { StateTypeorm } from '../../../common/infrastructure/persistence/typeorm/value-objects/State.typeorm';
 
 export class ClienteMapper {
   public static toTypeORM(convocatoria: Cliente): ClienteTypeORM {
     const personTypeORM: ClienteTypeORM = new ClienteTypeORM();
     personTypeORM.name = PersonNameTypeORM.from(convocatoria.getName().getFirstName(), convocatoria.getName().getLastName());
     personTypeORM.dni = DniTypeORM.from(convocatoria.getDni().getValue());
+    personTypeORM.state = StateTypeorm.from(convocatoria.getState());
     const createdAt: string = convocatoria.getAuditTrail() != null && convocatoria.getAuditTrail().getCreatedAt() != null ? convocatoria.getAuditTrail().getCreatedAt().format() : null;
     const createdBy: number = convocatoria.getAuditTrail() != null && convocatoria.getAuditTrail().getCreatedBy() != null ? convocatoria.getAuditTrail().getCreatedBy().getValue() : null;
     const updatedAt: string = convocatoria.getAuditTrail() != null && convocatoria.getAuditTrail().getUpdatedAt() != null ? convocatoria.getAuditTrail().getUpdatedAt().format() : null;

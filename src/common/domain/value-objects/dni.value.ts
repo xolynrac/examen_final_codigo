@@ -16,17 +16,22 @@ export class Dni {
   public static create(value: string): Result<AppNotification, Dni>
   {
     let notification: AppNotification = new AppNotification();
-    //value = (value ?? "").trim();
-    if (value === "") {
+    let stringValue : String = String(value);
+    stringValue = stringValue.trim();
+    if (stringValue === "") {
+      console.log("error1");
       notification.addError('dni is required', null);
     }
-    if (value.length != this.MAX_LENGTH) {
+
+    if (stringValue.length != this.MAX_LENGTH) {
       notification.addError('dni field must have ' + Dni.MAX_LENGTH + ' characters', null);
     }
+
     const regExp = new RegExp('^[0-9]+$');
     if (regExp.test(value) === false) {
       notification.addError('dni format is invalid', null);
     }
+
     if (notification.hasErrors()) {
       return Result.error(notification);
     }
