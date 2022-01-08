@@ -25,7 +25,7 @@ export class RegisterClienteValidator {
     if (lastName.length <= 0) {
       notification.addError('lastName is required', null);
     }
-    const dni: string = registerPersonRequest.dni ? registerPersonRequest.dni.trim() : '';
+    const dni: string = registerPersonRequest.dni ;
     if (dni.length <= 0) {
       notification.addError('dni is required', null);
     }

@@ -16,7 +16,7 @@ export class Dni {
   public static create(value: string): Result<AppNotification, Dni>
   {
     let notification: AppNotification = new AppNotification();
-    value = (value ?? "").trim();
+    //value = (value ?? "").trim();
     if (value === "") {
       notification.addError('dni is required', null);
     }

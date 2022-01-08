@@ -33,8 +33,8 @@ export class ClienteApplicationService {
     }
     const createdAt = DateTime.utcNow().format();
     const createdBy = registerClienteRequest.createdBy;
-    const updatedAt = null;
-    const updatedBy = null;
+    const updatedAt = DateTime.utcNow().format();;
+    const updatedBy = registerClienteRequest.createdBy;;
     const registerPerson: RegisterCliente = new RegisterCliente(
       registerClienteRequest.firstName,
       registerClienteRequest.lastName,
