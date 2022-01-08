@@ -7,6 +7,7 @@ import { RegisterClienteRequest } from '../dtos/request/register-cliente-request
 
 @Injectable()
 export class RegisterClienteValidator {
+  private  MAX_LENGTH: number = 8;
   constructor(
     @InjectRepository(ClienteTypeORM)
     private clienteRepository: Repository<ClienteTypeORM>,
@@ -25,9 +26,9 @@ export class RegisterClienteValidator {
     if (lastName.length <= 0) {
       notification.addError('lastName is required', null);
     }
-    const dni: string = registerPersonRequest.dni ;
-    if (dni.length <= 0) {
-      notification.addError('dni is required', null);
+    const dni: String = String(registerPersonRequest.dni) ;
+    if (dni.length  != this.MAX_LENGTH ) {
+      notification.addError('dni length is not valid', null);
     }
     if (notification.hasErrors()) {
       return notification;
